@@ -3,4 +3,6 @@ import { render } from "react-dom";
 
 import App from "./client/App";
 
+render(<App />, document.getElementById("root"));
+
 export default () => render(<App />, document.getElementById("root"));
