@@ -1,6 +1,7 @@
 // @ts-ignore
 import React, { Component, Placeholder } from "react";
 
+import Spinner from "../../Spinner";
 import Pokemon from "./Pokemon";
 import PokemonList from "./PokemonList";
 
@@ -16,7 +17,7 @@ class App extends Component<{ pokemon?: string }, State> {
   public render() {
     const { pokemon } = this.state;
     return (
-      <Placeholder fallback="Loading...">
+      <Placeholder delayMs={0} fallback={<Spinner />}>
         <div className="app">
           <div className="header">Pokedex</div>
           <div className="container">

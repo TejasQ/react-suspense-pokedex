@@ -3,6 +3,7 @@ import { title } from "case";
 
 import Info from "./Info";
 import Moves from "./Moves";
+import Spinner from "../../Spinner";
 
 interface Props {
   name: string;
@@ -43,14 +44,22 @@ class Pokemon extends Component<Props, State> {
 
   public render() {
     const { data } = this.state;
+    const getRandomColorValue = () => Math.floor(Math.random() * 255) + 1;
     return this.state.loading || !data ? (
-      "<Spinner />"
+      <Spinner />
     ) : (
       <>
         <div>
           <h1>{title(this.props.name)}</h1>
           {data.types.map(({ type }: any) => (
-            <span className="pokemon-types__type">{type.name}</span>
+            <span
+              className="pokemon-types__type"
+              style={{
+                backgroundColor: `hsla(${getRandomColorValue()}, 50%, 70%, .2)`,
+              }}
+            >
+              {type.name}
+            </span>
           ))}
           <Info name={data.name} sprite={data.sprites.front_default} stats={data.stats} />
         </div>

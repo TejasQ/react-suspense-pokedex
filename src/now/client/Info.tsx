@@ -13,7 +13,6 @@ const Info: React.SFC<InfoProps> = ({ name, sprite, stats }) => (
       <img alt={name} src={sprite} />
     </div>
     <div className="pokemon-properties">
-      <div className="info pokemon-types" />
       <div className="info pokemon-stats">
         <ul>
           {stats.map(({ stat, base_stat }: any) => (
@@ -21,7 +20,7 @@ const Info: React.SFC<InfoProps> = ({ name, sprite, stats }) => (
               {title(stat.name)}
               <div className="pokemon-stats__stat-container">
                 <progress className="pokemon-stats__stat" value={base_stat} max="252" />
-                <div className="pokemon-stats__stat-value">{base_stat}</div>
+                <div className="pokemon-stats__stat-value">{base_stat} / 252</div>
               </div>
             </li>
           ))}

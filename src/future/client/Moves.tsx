@@ -1,3 +1,4 @@
+import { title } from "case";
 import React from "react";
 
 // @ts-ignore
@@ -20,7 +21,7 @@ const moveResource = createResource(url => fetch(url).then(r => r.json()));
 
 class Moves extends React.Component<MovesProps, MovesState> {
   public state = {
-    currentMove: this.props.moves[0],
+    currentMove: this.props.moves[0] || {},
   };
 
   public setMove = (currentMove?: string) => {
@@ -42,7 +43,7 @@ class Moves extends React.Component<MovesProps, MovesState> {
                   onClick={() => this.setMove(move)}
                   key={move.name}
                 >
-                  {move.name}
+                  {title(move.name)}
                 </li>
               ))}
             </ul>
@@ -50,7 +51,7 @@ class Moves extends React.Component<MovesProps, MovesState> {
           <div className="pokemon-moves__details">
             <div className="pokemon-move-info">
               <div className="pokemon-move-info__key">Type</div>
-              <div className="pokemon-move-info__value">{type.name}</div>
+              <div className="pokemon-move-info__value">{title(type.name)}</div>
             </div>
             <div className="pokemon-move-info">
               <div className="pokemon-move-info__key">Accuracy</div>

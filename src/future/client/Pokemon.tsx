@@ -1,5 +1,6 @@
-import React from "react";
 import { title } from "case";
+// @ts-ignore
+import React, { Placeholder } from "react";
 
 import Info from "./Info";
 import Moves from "./Moves";
@@ -19,14 +20,23 @@ const pokemonResource = createResource(pokemon =>
 );
 
 const Pokemon: React.SFC<Props> = ({ name }) => {
-  const { name: pokemonName, stats, sprites, types, moves } = pokemonResource.read(cache, name);
+  const { name: pokemonName, stats, sprites = {}, types = [], moves = [] } = pokemonResource.read(cache, name);
+  const getRandomColorValue = () => Math.floor(Math.random() * 255) + 1;
 
   return (
     <>
       <div>
         <h1>{title(pokemonName)}</h1>
         {types.map(({ type }: any) => (
-          <span className="pokemon-types__type">{type.name}</span>
+          <span
+            key={type}
+            className="pokemon-types__type"
+            style={{
+              backgroundColor: `hsla(${getRandomColorValue()}, 50%, 70%,.2)`,
+            }}
+          >
+            {type.name}
+          </span>
         ))}
         <Info name={pokemonName} sprite={sprites.front_default} stats={stats} />
       </div>

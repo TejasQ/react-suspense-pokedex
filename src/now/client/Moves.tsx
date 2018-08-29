@@ -1,4 +1,7 @@
 import React from "react";
+import { title } from "case";
+
+import Spinner from "../../Spinner";
 
 interface MovesProps {
   moves: any[];
@@ -61,7 +64,7 @@ class Moves extends React.Component<MovesProps, MovesState> {
                   onClick={() => this.setMove(move)}
                   key={move.name}
                 >
-                  {move.name}
+                  {title(move.name)}
                 </li>
               ))}
             </ul>
@@ -71,7 +74,7 @@ class Moves extends React.Component<MovesProps, MovesState> {
               <>
                 <div className="pokemon-move-info">
                   <div className="pokemon-move-info__key">Type</div>
-                  <div className="pokemon-move-info__value">{data.type.name}</div>
+                  <div className="pokemon-move-info__value">{title(data.type.name)}</div>
                 </div>
                 <div className="pokemon-move-info">
                   <div className="pokemon-move-info__key">Accuracy</div>
@@ -87,7 +90,7 @@ class Moves extends React.Component<MovesProps, MovesState> {
                 </div>
               </>
             ) : (
-              "Loading..."
+              <Spinner />
             )}
           </div>
         </div>

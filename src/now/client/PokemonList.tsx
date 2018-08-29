@@ -1,6 +1,8 @@
 import { title } from "case";
 import React, { Component } from "react";
 
+import Spinner from "../../Spinner";
+
 interface Props {
   breed?: string;
   onChooseBreed: (breed: string) => void;
@@ -35,15 +37,17 @@ class PokemonList extends Component<Props, State> {
   };
 
   public render() {
-    return this.state.loading
-      ? "Loading"
-      : this.state.data && (
-          <ul>
-            {this.state.data.map(({ name }: { name: string }) => (
-              <li onClick={() => this.props.onChooseBreed(name)}>{title(name)}</li>
-            ))}
-          </ul>
-        );
+    return this.state.loading ? (
+      <Spinner />
+    ) : (
+      this.state.data && (
+        <ul>
+          {this.state.data.map(({ name }: { name: string }) => (
+            <li onClick={() => this.props.onChooseBreed(name)}>{title(name)}</li>
+          ))}
+        </ul>
+      )
+    );
   }
 }
 
