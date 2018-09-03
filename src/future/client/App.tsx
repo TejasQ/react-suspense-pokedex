@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { Component, Placeholder } from "react";
-
+// @ts-ignore
 import Spinner from "../../Spinner";
 import Pokemon from "./Pokemon";
 import PokemonList from "./PokemonList";
@@ -12,12 +12,12 @@ interface State {
 class App extends Component<{ pokemon?: string }, State> {
   public state: State = { pokemon: this.props.pokemon || "bulbasaur" };
 
-  public setBreed = (pokemon: string) => this.setState({ pokemon });
+  public setBreed = (pokemon: string) => setTimeout(() => this.setState({ pokemon }));
 
   public render() {
     const { pokemon } = this.state;
     return (
-      <Placeholder fallback={<Spinner />}>
+      <Placeholder delayMs={0} fallback={<Spinner />}>
         <div className="app">
           <div className="header">Pokedex</div>
           <div className="container">

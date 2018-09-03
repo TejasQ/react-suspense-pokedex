@@ -17,16 +17,14 @@ interface MovesState {
 }
 
 // @ts-ignore
-const moveResource = createResource(url => fetch(url).then(r => r.json()));
+export const moveResource = createResource(url => fetch(url).then(r => r.json()));
 
 class Moves extends React.Component<MovesProps, MovesState> {
   public state = {
     currentMove: this.props.moves[0] || {},
   };
 
-  public setMove = (currentMove?: string) => {
-    this.setState(() => ({ currentMove }));
-  };
+  public setMove = (currentMove?: string) => setTimeout(() => this.setState(() => ({ currentMove })));
 
   public render() {
     const { moves } = this.props;
