@@ -8,6 +8,7 @@ import Moves from "./Moves";
 import "isomorphic-unfetch";
 // @ts-ignore
 import { createResource } from "simple-cache-provider";
+import Spinner from "../../Spinner";
 import cache from "../react/cache";
 
 interface Props {
@@ -40,7 +41,9 @@ const Pokemon: React.SFC<Props> = ({ name }) => {
         ))}
         <Info name={pokemonName} sprite={sprites.front_default} stats={stats} />
       </div>
-      <Moves moves={moves.slice(0, 4).map(({ move }: any) => move)} />
+      <Placeholder delayMs={10e200} fallback={<Spinner />}>
+        <Moves moves={moves.slice(0, 4).map(({ move }: any) => move)} />
+      </Placeholder>
     </>
   );
 };

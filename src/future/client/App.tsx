@@ -17,7 +17,7 @@ class App extends Component<{ pokemon?: string }, State> {
   public render() {
     const { pokemon } = this.state;
     return (
-      <Placeholder delayMs={0} fallback={<Spinner />}>
+      <Placeholder fallback={<Spinner />}>
         <div className="app">
           <div className="header">Pokedex</div>
           <div className="container">

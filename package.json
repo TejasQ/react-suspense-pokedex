@@ -17,10 +17,10 @@
     "react-dom": "^16.4.2"
   },
   "scripts": {
-    "start": "npm run start:server:now || operational-scripts start",
+    "start": "run-p start:*",
     "start:client": "run-p start:client:*",
-    "start:client:now": "operational-scripts start --port 3001",
-    "start:client:future": "export TIME=future && operational-scripts start --port 4001",
+    "start:client:now": "operational-scripts start --port 3000",
+    "start:client:future": "export TIME=future && operational-scripts start --port 4000",
     "start:server": "run-p start:server:*",
     "start:server:now": "tsc --module commonjs && node ./lib/now/server/render",
     "start:server:future": "tsc --module commonjs && node ./lib/future/server/render",
