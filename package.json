@@ -9,7 +9,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "case": "^1.5.5",
     "emotion-server": "^9.2.6",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "isomorphic-unfetch": "^2.1.1",
     "node-fetch": "^2.2.0",
     "npm-run-all": "^4.1.3",
